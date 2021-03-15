@@ -6,32 +6,35 @@ import java.util.SortedMap;
 import java.util.TreeMap;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-@Service
-public class RestService {
+@RestController
+@RequestMapping(value="/api/task")
+public class RestworkController {
 	
-	private final RestTemplate restTemplate;
+	private  final RestTemplate restTemplate;
 	private String url = "https://jsonplaceholder.typicode.com/posts";
 	
-	public RestService(RestTemplateBuilder restTemplateBuilder) {
+	public RestworkController(RestTemplateBuilder restTemplateBuilder) {
         this.restTemplate = restTemplateBuilder.build();
     }
-
-    public Post[] getPostsPlainJSON() {
+	public Post[] getPostsPlainJSON() {
         return this.restTemplate.getForObject(url, Post[].class);
     }
-    
-    public int countEndpoints() {
-    	Post posts[] = this.restTemplate.getForObject(url, Post[].class);
-    	return posts.length;
-    }
-    
-    public String getDistinctUserIdAndCount() {
+	
+	@GetMapping(value="/countendpoints") 
+	public int countEndpoints() {
+	    	Post posts[] = this.restTemplate.getForObject(url, Post[].class);
+	    	return posts.length;
+	    }
+	@GetMapping(value="/getdistinctuseridandcount")
+	public String getDistinctUserIdAndCount() {
     	Post posts[] = this.restTemplate.getForObject(url, Post[].class);
     	SortedMap<Integer,Integer> map = new TreeMap();
     	
@@ -51,8 +54,9 @@ public class RestService {
         
     	return gsonString;
     }
-    
-    public Post[] getModifiedResponse() {
+	
+	@GetMapping(value="/getmodifiedresponse")
+	public Post[] getModifiedResponse() {
     	Post posts[] = this.restTemplate.getForObject(url, Post[].class);
     	
     	for (Post post : posts) {
@@ -64,4 +68,6 @@ public class RestService {
     	}
     	return posts;
     }
+	
+
 }
