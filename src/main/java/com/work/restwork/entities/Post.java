@@ -1,4 +1,4 @@
-package com.work.restwork;
+package com.work.restwork.entities;
 
 import java.io.Serializable;
 
