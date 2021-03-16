@@ -49,13 +49,10 @@ public class RestService {
 	public ArrayList<Post> getModifiedResponse() {
 		
 		ArrayList<Post> posts = getPostsPlainJSON();
-    	for (Post post : posts) {
-    		if(post.getId()==4)
-    		{
-    		post.setTitle("1800Flowers");
-    		post.setBody("1800Flowers");
-     		}
-    	}
+    	
+		posts.get(3).setTitle("1800Flowers");
+		posts.get(3).setBody("1800Flowers");
+		
     	return posts;
 	}
     

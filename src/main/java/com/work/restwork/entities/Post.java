@@ -10,6 +10,8 @@ public class Post implements Serializable {
 	private String body;
 	
 	
+	public Post() {
+	}
 	public int getUserId() {
 		return userId;
 	}
