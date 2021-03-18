@@ -1,4 +1,4 @@
-package com.work.restwork;
+package com.work.restwork.unittesting;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -34,7 +34,6 @@ class RestworkApplicationTests {
 	@Test
 	public void getModifiedResponseTest() {
 		ArrayList<Post> posts = restservice.getModifiedResponse();
-		
 		assertEquals(100, posts.size());
 		assertEquals("1800Flowers",posts.get(3).getTitle());
 		assertEquals("1800Flowers",posts.get(3).getBody());		

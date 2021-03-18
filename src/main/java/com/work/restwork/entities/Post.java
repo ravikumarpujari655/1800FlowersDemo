@@ -37,5 +37,7 @@ public class Post implements Serializable {
 		this.body = body;
 	}
 	
-	
+	public String toString() {
+		return "id: "+id+" userId: "+ userId+" title: "+title+" body: "+body ;
+	}
 }
