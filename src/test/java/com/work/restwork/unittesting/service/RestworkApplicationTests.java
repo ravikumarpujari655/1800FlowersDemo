@@ -1,4 +1,4 @@
-package com.work.restwork.unittesting;
+package com.work.restwork.unittesting.service;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
